@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "90d9d066-78da-4a19-8b03-a421f157bf38",
+		"name": "keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13397171"
+	},
+	"item": [
+		{
+			"name": "Auth User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "app_youtube",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "user_youtube",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/youtube/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"youtube",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "app_youtube",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin_youtube",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/youtube/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"youtube",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"clientId\":\"app_youtube\",\n    \"password\":\"user\",\n    \"grantType\":\"password\",\n    \"username\":\"user_youtube\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ5YVFCcVpGQ25vMjZaT2cwenJsdUJNZTB1eGpIb0NXdHRwNkJTQ3oxOW80In0.eyJleHAiOjE3MDgwMjQ2NDksImlhdCI6MTcwODAyNDM0OSwianRpIjoiYzkzZDA2ZDItMjE0Yi00NjQ0LWFlNGMtNjEzZTM3MmU5NTQyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy95b3V0dWJlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6Ijg1NmY0Yzc5LTA2ODAtNDVmYi04MThjLWEwYWFmMDAzNTg1ZCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFwcF95b3V0dWJlIiwic2Vzc2lvbl9zdGF0ZSI6IjRmNTIyODU5LTBjZjEtNDBiYi1hZGU3LTRmMmVmYmQ0MjQ2ZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMteW91dHViZSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjRmNTIyODU5LTBjZjEtNDBiYi1hZGU3LTRmMmVmYmQ0MjQ2ZCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5feW91dHViZSJ9.lWs-49_Wz3YNLj4SY0ulkz1vRHkv21pUDzayrg8fKLudkATIswSWbgwXOyq4TnxjD-YZglmCfNVqzcTOQqaUK4vPy_KpxbHe2IEqDz4F5G52MYYiUkt1oNyQ5Fr4_WKmk2Dphp_7tvApi2qM-wsccFvHHoJh5-djg-HRHqvXgR9VXZVU1BEQcYXVsl9FfQ3zqWocW-MeAYEU-lEFahL1w0w_4L9dV7pbVDczNWn7iUFYkj9nlo-nrB4U1EFN3_VGQGAX3FoDVoQJUvzXs8lC120JQ2OeoLgHYu21prO8hE3p33r-vlgLMXSY8_DwXWIYo9ZzWwaCL_jBRAFsCd1vJg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/products/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ5YVFCcVpGQ25vMjZaT2cwenJsdUJNZTB1eGpIb0NXdHRwNkJTQ3oxOW80In0.eyJleHAiOjE3MDgwMjQ2NDksImlhdCI6MTcwODAyNDM0OSwianRpIjoiYzkzZDA2ZDItMjE0Yi00NjQ0LWFlNGMtNjEzZTM3MmU5NTQyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy95b3V0dWJlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6Ijg1NmY0Yzc5LTA2ODAtNDVmYi04MThjLWEwYWFmMDAzNTg1ZCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFwcF95b3V0dWJlIiwic2Vzc2lvbl9zdGF0ZSI6IjRmNTIyODU5LTBjZjEtNDBiYi1hZGU3LTRmMmVmYmQ0MjQ2ZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMteW91dHViZSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjRmNTIyODU5LTBjZjEtNDBiYi1hZGU3LTRmMmVmYmQ0MjQ2ZCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5feW91dHViZSJ9.lWs-49_Wz3YNLj4SY0ulkz1vRHkv21pUDzayrg8fKLudkATIswSWbgwXOyq4TnxjD-YZglmCfNVqzcTOQqaUK4vPy_KpxbHe2IEqDz4F5G52MYYiUkt1oNyQ5Fr4_WKmk2Dphp_7tvApi2qM-wsccFvHHoJh5-djg-HRHqvXgR9VXZVU1BEQcYXVsl9FfQ3zqWocW-MeAYEU-lEFahL1w0w_4L9dV7pbVDczNWn7iUFYkj9nlo-nrB4U1EFN3_VGQGAX3FoDVoQJUvzXs8lC120JQ2OeoLgHYu21prO8hE3p33r-vlgLMXSY8_DwXWIYo9ZzWwaCL_jBRAFsCd1vJg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/products/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
