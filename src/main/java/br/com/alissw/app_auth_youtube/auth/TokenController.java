@@ -1,6 +1,7 @@
 package br.com.alissw.app_auth_youtube.auth;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,6 +17,9 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/token")
 @RestController
 public class TokenController {
+	
+	@Value("${host}")
+	private String host;
 
 	@PostMapping("/")
 	public ResponseEntity<String> token(@RequestBody User user) {
@@ -31,7 +35,7 @@ public class TokenController {
 		
 		HttpEntity<MultiValueMap<String, String>> entity = new  HttpEntity<MultiValueMap<String, String>>(formData, httpHeaders);
 		
-		var result = rt.postForEntity("http://localhost:8080/realms/youtube/protocol/openid-connect/token", entity, String.class);
+		var result = rt.postForEntity(host, entity, String.class);
 		
 		return result;
 	}
